@@ -400,8 +400,9 @@ class QueuedTrainer(object):
         print("Run ID: ", run_id)
         print("Log directory: ", log_dir)
         print("---------------------------------------")
-
+        print(1)
         saver = tf.train.Saver(max_to_keep=max_checkpoints_to_keep)
+        print(2)
         try:
             slim.learning.train(
                 train_op, log_dir, self._train_step_fn, saver=saver,
@@ -412,7 +413,9 @@ class QueuedTrainer(object):
             # catch the exception here because it occurs whenever we close the
             # queue with self._stop_all_threads().
             pass
+        print(3)
         self._wait_for_threads()
+        print('out')
 
     def evaluate(self, dataset, checkpoint_dir, log_dir, run_id=None,
                  init_op=None, eval_op=None, final_op=None,
